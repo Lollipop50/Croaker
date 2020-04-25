@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="GreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/greenThemePrimary</item>
+        <item name="colorPrimaryDark">@color/greenThemePrimaryDark</item>
+        <item name="colorAccent">@color/greenThemeAccent</item>
+    </style>
+
 </resources>
