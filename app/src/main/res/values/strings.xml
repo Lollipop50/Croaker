@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Croaker</string>
+
+    <string name="menu_feed">Feed</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_profile">Profile</string>
+
+    <string name="search_button">Search</string>
+
+    <string name="edit_button">Edit</string>
 </resources>

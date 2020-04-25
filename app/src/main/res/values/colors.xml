@@ -7,4 +7,7 @@
     <color name="greenThemePrimary">#158B00</color>
     <color name="greenThemePrimaryDark">#156400</color>
     <color name="greenThemeAccent">#03DAC5</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>
