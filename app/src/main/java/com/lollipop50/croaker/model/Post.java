@@ -4,11 +4,28 @@ import java.util.UUID;
 
 public class Post {
 
-    //Add avatar and username
+    private String avatar;
+    private String username;
     private UUID id;
     private String postText;
     private String postPicture;
     private boolean isLiked;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public UUID getId() {
         return id;
