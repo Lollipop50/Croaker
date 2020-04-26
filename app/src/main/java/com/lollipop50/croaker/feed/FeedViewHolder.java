@@ -2,6 +2,7 @@ package com.lollipop50.croaker.feed;
 
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,6 +34,13 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
         postTextView = itemView.findViewById(R.id.post_text_view);
         postPictureView = itemView.findViewById(R.id.post_picture_view);
         isLikedView = itemView.findViewById(R.id.is_liked_view);
+
+        isLikedView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                currentPost.setLiked(isChecked);
+            }
+        });
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

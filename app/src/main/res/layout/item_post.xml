@@ -11,7 +11,7 @@
         android:id="@+id/avatar_view"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        tools:src="@drawable/my_avatar" />
+        tools:src="@drawable/no_avatar" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -44,7 +44,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
-            tools:src="@drawable/my_avatar" />
+            tools:src="@drawable/question" />
 
         <CheckBox
             android:id="@+id/is_liked_view"

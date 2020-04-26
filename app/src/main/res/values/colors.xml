@@ -9,5 +9,5 @@
 
     <color name="greenThemePrimary">#19B300</color>
     <color name="greenThemePrimaryDark">#268D00</color>
-    <color name="greenThemeAccent">#03DAC5</color>
+    <color name="greenThemeAccent">#19B300</color>
 </resources>

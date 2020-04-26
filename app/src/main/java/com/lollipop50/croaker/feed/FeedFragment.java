@@ -2,6 +2,7 @@ package com.lollipop50.croaker.feed;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lollipop50.croaker.R;
 import com.lollipop50.croaker.model.Post;
 import com.lollipop50.croaker.repository.Repository;
@@ -18,8 +20,9 @@ import com.lollipop50.croaker.repository.test.TestRepository;
 public class FeedFragment extends Fragment {
 
     private RecyclerView feedRecyclerView;
-    private FeedAdapter feedAdapter;
+    private FloatingActionButton addButton;
 
+    private FeedAdapter feedAdapter;
     private Repository repository;
 
     public FeedFragment() {
@@ -38,6 +41,7 @@ public class FeedFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         feedRecyclerView = view.findViewById(R.id.feedRecyclerView);
+        addButton = view.findViewById(R.id.add_button);
     }
 
     @Override
@@ -53,9 +57,12 @@ public class FeedFragment extends Fragment {
 
         feedRecyclerView.setAdapter(feedAdapter);
 
-        /*for (int i = 0; i < 9; i++) {
-            repository.add(TestRepository.generateDefaultPost());
-        }*/
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                repository.add(TestRepository.generateDefaultPost());
+            }
+        });
     }
 
     @Override
@@ -81,11 +88,13 @@ public class FeedFragment extends Fragment {
         @Override
         public void onItemClick(Post post) {
             // Show post
+            Toast.makeText(getContext(), "Click", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onLongItemClick(Post post) {
             // Show delete dialog
+            Toast.makeText(getContext(), "Long click", Toast.LENGTH_SHORT).show();
         }
     };
 }

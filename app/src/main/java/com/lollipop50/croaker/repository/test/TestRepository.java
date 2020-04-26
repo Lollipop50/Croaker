@@ -49,7 +49,6 @@ public class TestRepository extends BaseRepository {
         defaultPost.setUsername("Lollipop50");
         defaultPost.setPostText("Welcome to my blog!");
         // Set post picture
-        defaultPost.setLiked(false);
         return defaultPost;
     }
 }
