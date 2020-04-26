@@ -11,6 +11,10 @@ public class Post {
     private String postPicture;
     private boolean isLiked;
 
+    public Post() {
+        id = UUID.randomUUID();
+    }
+
     public String getAvatar() {
         return avatar;
     }
