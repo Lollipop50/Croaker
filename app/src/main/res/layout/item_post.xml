@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             tools:text="Lollipop50" />
 

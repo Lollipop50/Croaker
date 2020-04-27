@@ -1,5 +1,7 @@
 package com.lollipop50.croaker.feed;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lollipop50.croaker.R;
 import com.lollipop50.croaker.model.Post;
 
+import java.io.File;
+
 public class FeedViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView avatarView;
@@ -20,14 +24,10 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
     private ImageView postPictureView;
     private CheckBox isLikedView;
 
-    private final FeedAdapter.ItemEventsListener itemEventsListener;
-
     private Post currentPost;
 
     public FeedViewHolder(@NonNull View itemView, final FeedAdapter.ItemEventsListener itemEventsListener) {
         super(itemView);
-
-        this.itemEventsListener = itemEventsListener;
 
         avatarView = itemView.findViewById(R.id.avatar_view);
         usernameView = itemView.findViewById(R.id.username_view);
@@ -61,10 +61,22 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
     public void bidnTo(Post post) {
         currentPost = post;
 
-        // Add avatar
+        File avatarFile = new File(currentPost.getAvatar());
+        if (avatarFile.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(avatarFile.getAbsolutePath());
+            avatarView.setImageBitmap(bitmap);
+        }
+
         usernameView.setText(currentPost.getUsername());
+
         postTextView.setText(currentPost.getPostText());
-        // Add postPicture
+
+        File postPictureFile = new File(currentPost.getPostPicture());
+        if (postPictureFile.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(postPictureFile.getAbsolutePath());
+            postPictureView.setImageBitmap(bitmap);
+        }
+
         isLikedView.setChecked(currentPost.isLiked());
     }
 }

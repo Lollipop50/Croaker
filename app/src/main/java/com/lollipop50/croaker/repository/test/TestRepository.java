@@ -45,10 +45,10 @@ public class TestRepository extends BaseRepository {
 
     public static Post generateDefaultPost() {
         Post defaultPost = new Post();
-        // Set avatar
+        defaultPost.setAvatar("/storage/emulated/0/Pics4MyApps/KBird.jpg");
         defaultPost.setUsername("Lollipop50");
         defaultPost.setPostText("Welcome to my blog!");
-        // Set post picture
+        defaultPost.setPostPicture("/storage/emulated/0/Pics4MyApps/Parrots.jpg");
         return defaultPost;
     }
 }
