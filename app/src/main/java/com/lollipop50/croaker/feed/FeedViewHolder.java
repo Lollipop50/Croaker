@@ -58,7 +58,7 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void bidnTo(Post post) {
+    public void bindTo(Post post) {
         currentPost = post;
 
         File avatarFile = new File(currentPost.getAvatar());

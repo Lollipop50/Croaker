@@ -7,12 +7,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lollipop50.croaker.R;
 import com.lollipop50.croaker.model.Post;
+import com.lollipop50.croaker.post_details.PostDetailsFragment;
 import com.lollipop50.croaker.repository.Repository;
 import com.lollipop50.croaker.repository.RepositoryCreator;
 import com.lollipop50.croaker.repository.test.TestRepository;
@@ -77,6 +79,13 @@ public class FeedFragment extends Fragment {
         super.onStop();
     }
 
+    private void showPost(Post post) {
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, PostDetailsFragment.makeInstance(post.getPostId()))
+                .addToBackStack(null)
+                .commit();
+    }
+
     private final Repository.Listener repositoryListener = new Repository.Listener() {
         @Override
         public void onDataChanged() {
@@ -87,14 +96,12 @@ public class FeedFragment extends Fragment {
     private final FeedAdapter.ItemEventsListener itemEventsListener = new FeedAdapter.ItemEventsListener() {
         @Override
         public void onItemClick(Post post) {
-            // Show post
-            Toast.makeText(getContext(), "Click", Toast.LENGTH_SHORT).show();
+            showPost(post);
         }
 
         @Override
         public void onLongItemClick(Post post) {
             // Show delete dialog
-            Toast.makeText(getContext(), "Long click", Toast.LENGTH_SHORT).show();
         }
     };
 }

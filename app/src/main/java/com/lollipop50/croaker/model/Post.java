@@ -6,13 +6,13 @@ public class Post {
 
     private String avatar;
     private String username;
-    private UUID id;
+    private UUID postId;
     private String postText;
     private String postPicture;
     private boolean isLiked;
 
     public Post() {
-        id = UUID.randomUUID();
+        postId = UUID.randomUUID();
     }
 
     public String getAvatar() {
@@ -31,12 +31,12 @@ public class Post {
         this.username = username;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getPostId() {
+        return postId;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setPostId(UUID postId) {
+        this.postId = postId;
     }
 
     public String getPostText() {

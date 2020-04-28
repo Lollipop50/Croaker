@@ -4,21 +4,21 @@ import java.util.UUID;
 
 public class User {
 
-    private UUID id;
+    private UUID userId;
     private String avatar;
     private String username;
     private String bio;
 
     public User() {
-        id = UUID.randomUUID();
+        userId = UUID.randomUUID();
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getUserId() {
+        return userId;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 
     public String getAvatar() {

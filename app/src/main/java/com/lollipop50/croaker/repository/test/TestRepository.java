@@ -19,7 +19,7 @@ public class TestRepository extends BaseRepository {
     @Override
     public Post getPostById(UUID id) {
         for (Post post : allPosts) {
-            if (post.getId().equals(id)) {
+            if (post.getPostId().equals(id)) {
                 return post;
             }
         }

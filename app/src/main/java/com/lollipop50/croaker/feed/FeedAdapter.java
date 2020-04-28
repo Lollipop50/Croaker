@@ -31,7 +31,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
 
     @Override
     public long getItemId(int position) {
-        return allPosts.get(position).getId().hashCode();
+        return allPosts.get(position).getPostId().hashCode();
     }
 
     @NonNull
@@ -44,7 +44,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull FeedViewHolder holder, int position) {
-        holder.bidnTo(allPosts.get(position));
+        holder.bindTo(allPosts.get(position));
     }
 
     @Override
