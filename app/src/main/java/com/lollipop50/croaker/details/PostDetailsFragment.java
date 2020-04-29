@@ -1,4 +1,4 @@
-package com.lollipop50.croaker.post_details;
+package com.lollipop50.croaker.details;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

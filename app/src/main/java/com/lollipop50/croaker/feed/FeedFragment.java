@@ -2,19 +2,17 @@ package com.lollipop50.croaker.feed;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lollipop50.croaker.R;
 import com.lollipop50.croaker.model.Post;
-import com.lollipop50.croaker.post_details.PostDetailsFragment;
+import com.lollipop50.croaker.details.PostDetailsFragment;
 import com.lollipop50.croaker.repository.Repository;
 import com.lollipop50.croaker.repository.RepositoryCreator;
 import com.lollipop50.croaker.repository.test.TestRepository;
@@ -86,6 +84,11 @@ public class FeedFragment extends Fragment {
                 .commit();
     }
 
+    private void showDeleteDialog(Post post) {
+        DeleteConfirmationDialogFragment.makeInstance(post)
+                .show(getParentFragmentManager(), null);
+    }
+
     private final Repository.Listener repositoryListener = new Repository.Listener() {
         @Override
         public void onDataChanged() {
@@ -101,7 +104,7 @@ public class FeedFragment extends Fragment {
 
         @Override
         public void onLongItemClick(Post post) {
-            // Show delete dialog
+            showDeleteDialog(post);
         }
     };
 }
