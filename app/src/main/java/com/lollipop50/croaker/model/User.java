@@ -1,24 +1,15 @@
 package com.lollipop50.croaker.model;
 
-import java.util.UUID;
-
 public class User {
 
-    private UUID userId;
     private String avatar;
     private String username;
     private String bio;
 
     public User() {
-        userId = UUID.randomUUID();
-    }
-
-    public UUID getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
+        // Delete it later:
+        avatar = "/storage/emulated/0/Pics4MyApps/KBird.jpg";
+        username = "Lollipop50";
     }
 
     public String getAvatar() {

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lollipop50.croaker.R;
+import com.lollipop50.croaker.details.PostAddingFragment;
 import com.lollipop50.croaker.model.Post;
 import com.lollipop50.croaker.details.PostDetailsFragment;
 import com.lollipop50.croaker.repository.Repository;
@@ -48,7 +49,10 @@ public class FeedFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        feedRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        feedRecyclerView.setLayoutManager(linearLayoutManager);
 
         feedAdapter = new FeedAdapter(
                 RepositoryCreator.getInstance(getContext()).getAllPosts(),
@@ -60,7 +64,8 @@ public class FeedFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                repository.add(TestRepository.generateDefaultPost());
+//                repository.add(TestRepository.generateDefaultPost());
+                createNewPost();
             }
         });
     }
@@ -77,11 +82,19 @@ public class FeedFragment extends Fragment {
         super.onStop();
     }
 
-    private void showPost(Post post) {
+    private void makeTransactionWithBackStack(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, PostDetailsFragment.makeInstance(post.getPostId()))
+                .replace(R.id.fragment_container, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    private void createNewPost() {
+        makeTransactionWithBackStack(new PostAddingFragment());
+    }
+
+    private void showPost(Post post) {
+        makeTransactionWithBackStack(PostDetailsFragment.makeInstance(post.getPostId()));
     }
 
     private void showDeleteDialog(Post post) {
