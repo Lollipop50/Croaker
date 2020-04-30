@@ -72,6 +72,9 @@ public class ProfileFragment extends Fragment {
     }
 
     private void editProfile() {
-        // Create new fragment
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new ProfileEditingFragment())
+                .addToBackStack(null)
+                .commit();
     }
 }

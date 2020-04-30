@@ -17,4 +17,11 @@
     <string name="add_picture_button">Add picture</string>
     <string name="not_picked_message">You haven\'t picked image</string>
     <string name="fail_message">Something went wrong</string>
+
+    <string name="back_button">Back</string>
+    <string name="save_button">Save</string>
+    <string name="username_text">Username</string>
+    <string name="username_hint">Username cannot be blank</string>
+    <string name="bio_text">Bio</string>
+    <string name="bio_hint">Tell something about you</string>
 </resources>
