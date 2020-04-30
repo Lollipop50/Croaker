@@ -65,6 +65,8 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
         if (avatarFile.exists()) {
             Bitmap bitmap = BitmapFactory.decodeFile(avatarFile.getAbsolutePath());
             avatarView.setImageBitmap(bitmap);
+        } else {
+            avatarView.setImageResource(R.drawable.no_avatar);
         }
 
         usernameView.setText(currentPost.getUsername());

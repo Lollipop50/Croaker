@@ -23,6 +23,8 @@ import com.lollipop50.croaker.model.Post;
 import com.lollipop50.croaker.model.User;
 import com.lollipop50.croaker.repository.Repository;
 import com.lollipop50.croaker.repository.RepositoryCreator;
+import com.lollipop50.croaker.repository.UserData;
+import com.lollipop50.croaker.repository.UserDataProvider;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -39,10 +41,19 @@ public class PostAddingFragment extends Fragment {
     private String postText = "";
     private String postPicturePath = "";
 
-    private User user;
+    private UserData userData;
+    private User currentUser;
 
     public PostAddingFragment() {
         super(R.layout.fragment_post_adding);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        userData = UserDataProvider.getUserData(getContext());
+        currentUser = userData.getCurrentUser();
     }
 
     @Override
@@ -107,10 +118,9 @@ public class PostAddingFragment extends Fragment {
     }
 
     private void addNewPost() {
-        user = new User();  //Replace it with getting user from other repository
         Post newPost = new Post();
-        newPost.setAvatar(user.getAvatar());
-        newPost.setUsername(user.getUsername());
+        newPost.setAvatar(currentUser.getAvatar());
+        newPost.setUsername(currentUser.getUsername());
         newPost.setPostText(postText);
         newPost.setPostPicture(postPicturePath);
 

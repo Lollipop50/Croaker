@@ -1,16 +1,12 @@
 package com.lollipop50.croaker.model;
 
+import com.lollipop50.croaker.R;
+
 public class User {
 
     private String avatar;
     private String username;
     private String bio;
-
-    public User() {
-        // Delete it later:
-        avatar = "/storage/emulated/0/Pics4MyApps/KBird.jpg";
-        username = "Lollipop50";
-    }
 
     public String getAvatar() {
         return avatar;

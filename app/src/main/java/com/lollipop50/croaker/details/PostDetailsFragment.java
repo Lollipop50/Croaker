@@ -32,9 +32,8 @@ public class PostDetailsFragment extends Fragment {
     private ImageView postPictureView;
     private CheckBox isLikedView;
 
-    private Post post;
-
     private Repository repository;
+    private Post post;
 
     public PostDetailsFragment() {
         super(R.layout.fragment_post_details);
@@ -49,7 +48,6 @@ public class PostDetailsFragment extends Fragment {
         postId = (UUID) arguments.getSerializable(KEY_ID);
 
         repository = RepositoryCreator.getInstance(getContext());
-
         post = repository.getPostById(postId);
     }
 
