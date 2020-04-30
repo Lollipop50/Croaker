@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lollipop50.croaker.R;
 import com.lollipop50.croaker.model.Post;
+import com.lollipop50.croaker.repository.test.TestUserData;
 
 import java.io.File;
 
@@ -61,13 +62,7 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
     public void bindTo(Post post) {
         currentPost = post;
 
-        File avatarFile = new File(currentPost.getAvatar());
-        if (avatarFile.exists()) {
-            Bitmap bitmap = BitmapFactory.decodeFile(avatarFile.getAbsolutePath());
-            avatarView.setImageBitmap(bitmap);
-        } else {
-            avatarView.setImageResource(R.drawable.no_avatar);
-        }
+        TestUserData.setAvatarFromFile(post.getAvatar(), avatarView);
 
         usernameView.setText(currentPost.getUsername());
 

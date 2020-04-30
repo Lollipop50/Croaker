@@ -17,6 +17,7 @@ import com.lollipop50.croaker.R;
 import com.lollipop50.croaker.model.Post;
 import com.lollipop50.croaker.repository.Repository;
 import com.lollipop50.croaker.repository.RepositoryCreator;
+import com.lollipop50.croaker.repository.test.TestUserData;
 
 import java.io.File;
 import java.util.UUID;
@@ -66,11 +67,7 @@ public class PostDetailsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        File avatarFile = new File(post.getAvatar());
-        if (avatarFile.exists()) {
-            Bitmap bitmap = BitmapFactory.decodeFile(avatarFile.getAbsolutePath());
-            avatarView.setImageBitmap(bitmap);
-        }
+        TestUserData.setAvatarFromFile(post.getAvatar(), avatarView);
 
         usernameView.setText(post.getUsername());
 
