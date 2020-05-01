@@ -2,13 +2,22 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+<<<<<<< HEAD
+    android:layout_height="match_parent">
+=======
     android:layout_height="match_parent"
     android:padding="8dp">
+>>>>>>> origin/master
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+        android:orientation="vertical"
+        android:padding="8dp">
+=======
         android:orientation="vertical">
+>>>>>>> origin/master
 
         <LinearLayout
             android:layout_width="match_parent"
