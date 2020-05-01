@@ -20,26 +20,11 @@ public class TestUserData implements UserData {
     }
 
     @Override
-    public void setUserData(String avatar, String username, String bio) {
-        currentUser.setAvatar(avatar);
-        currentUser.setUsername(username);
-        currentUser.setBio(bio);
-    }
-
-    @Override
-    public void generateDefaultUser() {
-        currentUser.setAvatar("");
-        currentUser.setUsername("User");
+    public void setUserData(User newUserData) {
+        currentUser = newUserData;
     }
 
     public static void setAvatarFromFile(String filePath, ImageView avatarView) {
-        /*File avatarFile = new File(filePath);
-        if (avatarFile.exists()) {
-            return BitmapFactory.decodeFile(avatarFile.getAbsolutePath());
-        } else {
-            profileAvatarView.setImageResource(R.drawable.no_avatar);
-        }*/
-
         File avatarFile = new File(filePath);
         if (avatarFile.exists()) {
             Bitmap bitmap = BitmapFactory.decodeFile(avatarFile.getAbsolutePath());

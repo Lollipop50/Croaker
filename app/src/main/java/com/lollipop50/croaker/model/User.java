@@ -1,12 +1,16 @@
 package com.lollipop50.croaker.model;
 
-import com.lollipop50.croaker.R;
-
 public class User {
 
     private String avatar;
     private String username;
     private String bio;
+
+    public User() {
+        avatar = "";
+        username = "User";
+        bio = "";
+    }
 
     public String getAvatar() {
         return avatar;

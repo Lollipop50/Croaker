@@ -16,9 +16,6 @@ import com.lollipop50.croaker.model.Post;
 import com.lollipop50.croaker.details.PostDetailsFragment;
 import com.lollipop50.croaker.repository.Repository;
 import com.lollipop50.croaker.repository.RepositoryCreator;
-import com.lollipop50.croaker.repository.UserData;
-import com.lollipop50.croaker.repository.UserDataProvider;
-import com.lollipop50.croaker.repository.test.TestRepository;
 
 public class FeedFragment extends Fragment {
 
@@ -26,7 +23,6 @@ public class FeedFragment extends Fragment {
     private FloatingActionButton addButton;
 
     private FeedAdapter feedAdapter;
-    private UserData userData;
     private Repository repository;
 
     public FeedFragment() {
@@ -37,7 +33,6 @@ public class FeedFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        userData = UserDataProvider.getUserData(getContext());
         repository = RepositoryCreator.getInstance(getContext());
     }
 
@@ -57,8 +52,6 @@ public class FeedFragment extends Fragment {
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         feedRecyclerView.setLayoutManager(linearLayoutManager);
-
-        userData.generateDefaultUser();
 
         feedAdapter = new FeedAdapter(
                 RepositoryCreator.getInstance(getContext()).getAllPosts(),

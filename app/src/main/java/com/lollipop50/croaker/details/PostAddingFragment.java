@@ -117,6 +117,10 @@ public class PostAddingFragment extends Fragment {
         });
     }
 
+    private void closePostEditor() {
+        getParentFragmentManager().popBackStack();
+    }
+
     private void addNewPost() {
         Post newPost = new Post();
         newPost.setAvatar(currentUser.getAvatar());
@@ -126,10 +130,6 @@ public class PostAddingFragment extends Fragment {
 
         Repository repository = RepositoryCreator.getInstance(getContext());
         repository.add(newPost);
-    }
-
-    private void closePostEditor() {
-        getParentFragmentManager().popBackStack();
     }
 
     private void pickImageFromGallery() {
