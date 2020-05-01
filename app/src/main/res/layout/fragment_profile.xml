@@ -48,6 +48,7 @@
             android:layout_marginRight="16dp"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:layout_marginBottom="16dp"
             tools:text="Bio" />
     </LinearLayout>
 
