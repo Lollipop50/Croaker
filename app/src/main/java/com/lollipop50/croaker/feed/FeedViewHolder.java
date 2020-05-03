@@ -62,7 +62,7 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
     public void bindTo(Post post) {
         currentPost = post;
 
-        TestUserData.setAvatarFromFile(post.getAvatar(), avatarView);
+        TestUserData.setAvatarFromFile(currentPost.getAvatar(), avatarView);
 
         usernameView.setText(currentPost.getUsername());
 
@@ -72,6 +72,8 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
         if (postPictureFile.exists()) {
             Bitmap bitmap = BitmapFactory.decodeFile(postPictureFile.getAbsolutePath());
             postPictureView.setImageBitmap(bitmap);
+        } else {
+            postPictureView.setImageDrawable(null);
         }
 
         isLikedView.setChecked(currentPost.isLiked());

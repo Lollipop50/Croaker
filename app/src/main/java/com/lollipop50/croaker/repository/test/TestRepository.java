@@ -39,7 +39,7 @@ public class TestRepository extends BaseRepository {
     }
 
     @Override
-    public void update(Post post) {
+    public void update() {
         notifyListeners();
     }
 

@@ -15,7 +15,7 @@ public interface Repository {
 
     void delete(Post post);
 
-    void update(Post post);
+    void update();
 
     void addListener(Listener listener);
 

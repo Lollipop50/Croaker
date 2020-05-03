@@ -1,5 +1,6 @@
 package com.lollipop50.croaker.profile;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -13,7 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.lollipop50.croaker.R;
+import com.lollipop50.croaker.details.PostAddingActivity;
 import com.lollipop50.croaker.model.User;
+import com.lollipop50.croaker.repository.RepositoryCreator;
 import com.lollipop50.croaker.repository.UserData;
 import com.lollipop50.croaker.repository.UserDataProvider;
 import com.lollipop50.croaker.repository.test.TestRepository;
@@ -57,9 +60,10 @@ public class ProfileFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        TestUserData.setAvatarFromFile(currentUser.getAvatar(), profileAvatarView);
-
+        /*TestUserData.setAvatarFromFile(currentUser.getAvatar(), profileAvatarView);
         profileUsernameView.setText(currentUser.getUsername());
+        profileBioView.setText(currentUser.getBio());*/
+        updateProfile();
 
         profileEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,14 +71,25 @@ public class ProfileFragment extends Fragment {
                 editProfile();
             }
         });
+    }
 
-        profileBioView.setText(currentUser.getBio());
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateProfile();
     }
 
     private void editProfile() {
-        getParentFragmentManager().beginTransaction()
+        /*getParentFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new ProfileEditingFragment())
                 .addToBackStack(null)
-                .commit();
+                .commit();*/
+        startActivity(new Intent(getContext(), ProfileEditingActivity.class));
+    }
+
+    private void updateProfile() {
+        TestUserData.setAvatarFromFile(currentUser.getAvatar(), profileAvatarView);
+        profileUsernameView.setText(currentUser.getUsername());
+        profileBioView.setText(currentUser.getBio());
     }
 }

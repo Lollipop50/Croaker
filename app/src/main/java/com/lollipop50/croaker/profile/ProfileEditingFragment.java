@@ -146,7 +146,8 @@ public class ProfileEditingFragment extends Fragment {
     }
 
     private void closeProfileEditor() {
-        getParentFragmentManager().popBackStack();
+//        getParentFragmentManager().popBackStack();
+        getActivity().finish();
     }
 
     private void saveChanges() {

@@ -1,5 +1,6 @@
 package com.lollipop50.croaker.feed;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lollipop50.croaker.R;
+import com.lollipop50.croaker.details.PostAddingActivity;
 import com.lollipop50.croaker.details.PostAddingFragment;
 import com.lollipop50.croaker.model.Post;
 import com.lollipop50.croaker.details.PostDetailsFragment;
@@ -53,10 +55,7 @@ public class FeedFragment extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         feedRecyclerView.setLayoutManager(linearLayoutManager);
 
-        feedAdapter = new FeedAdapter(
-                RepositoryCreator.getInstance(getContext()).getAllPosts(),
-                itemEventsListener
-        );
+        feedAdapter = new FeedAdapter(repository.getAllPosts(), itemEventsListener);
 
         feedRecyclerView.setAdapter(feedAdapter);
 
@@ -69,15 +68,25 @@ public class FeedFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         repository.addListener(repositoryListener);
+        repository.update();
     }
 
     @Override
-    public void onStop() {
+    public void onPause() {
         repository.removeListener(repositoryListener);
-        super.onStop();
+        super.onPause();
+    }
+
+    private void createNewPost() {
+//        makeTransactionWithBackStack(new PostAddingFragment());
+        startActivity(new Intent(getContext(), PostAddingActivity.class));
+    }
+
+    private void showPost(Post post) {
+        makeTransactionWithBackStack(PostDetailsFragment.makeInstance(post.getPostId()));
     }
 
     private void makeTransactionWithBackStack(Fragment fragment) {
@@ -85,14 +94,6 @@ public class FeedFragment extends Fragment {
                 .replace(R.id.fragment_container, fragment)
                 .addToBackStack(null)
                 .commit();
-    }
-
-    private void createNewPost() {
-        makeTransactionWithBackStack(new PostAddingFragment());
-    }
-
-    private void showPost(Post post) {
-        makeTransactionWithBackStack(PostDetailsFragment.makeInstance(post.getPostId()));
     }
 
     private void showDeleteDialog(Post post) {

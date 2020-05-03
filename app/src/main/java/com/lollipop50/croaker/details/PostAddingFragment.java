@@ -95,11 +95,11 @@ public class PostAddingFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() != 0) {
+                if ((s.length() == 0) && (postPicturePath.length() == 0)) {
+                    croakButton.setEnabled(false);
+                } else {
                     postText = s.toString();
                     croakButton.setEnabled(true);
-                } else {
-                    croakButton.setEnabled(false);
                 }
             }
 
@@ -118,7 +118,8 @@ public class PostAddingFragment extends Fragment {
     }
 
     private void closePostEditor() {
-        getParentFragmentManager().popBackStack();
+//        getParentFragmentManager().popBackStack();
+        getActivity().finish();
     }
 
     private void addNewPost() {
