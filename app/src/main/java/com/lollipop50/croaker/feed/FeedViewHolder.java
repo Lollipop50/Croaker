@@ -27,8 +27,12 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
 
     private Post currentPost;
 
-    public FeedViewHolder(@NonNull View itemView, final FeedAdapter.ItemEventsListener itemEventsListener) {
+    private final FeedAdapter.ItemEventsListener itemEventsListener;
+
+    public FeedViewHolder(@NonNull View itemView, FeedAdapter.ItemEventsListener itemEventsListener) {
         super(itemView);
+
+        this.itemEventsListener = itemEventsListener;
 
         avatarView = itemView.findViewById(R.id.avatar_view);
         usernameView = itemView.findViewById(R.id.username_view);
@@ -36,27 +40,8 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
         postPictureView = itemView.findViewById(R.id.post_picture_view);
         isLikedView = itemView.findViewById(R.id.is_liked_view);
 
-        isLikedView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                currentPost.setLiked(isChecked);
-            }
-        });
-
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                itemEventsListener.onItemClick(currentPost);
-            }
-        });
-
-        itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                itemEventsListener.onLongItemClick(currentPost);
-                return true;
-            }
-        });
+        itemView.setOnClickListener(itemClickListener);
+        itemView.setOnLongClickListener(itemLongLickListener);
     }
 
     public void bindTo(Post post) {
@@ -76,6 +61,31 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
             postPictureView.setImageDrawable(null);
         }
 
+        isLikedView.setOnCheckedChangeListener(null);
         isLikedView.setChecked(currentPost.isLiked());
+        isLikedView.setOnCheckedChangeListener(onLikeClickListener);
     }
+
+    private final CompoundButton.OnCheckedChangeListener onLikeClickListener =
+            new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    itemEventsListener.onLikeClick(currentPost, isChecked);
+                }
+            };
+
+    private final View.OnClickListener itemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            itemEventsListener.onItemClick(currentPost);
+        }
+    };
+
+    private final View.OnLongClickListener itemLongLickListener = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+            itemEventsListener.onLongItemClick(currentPost);
+            return true;
+        }
+    };
 }

@@ -108,6 +108,12 @@ public class FeedFragment extends Fragment {
 
     private final FeedAdapter.ItemEventsListener itemEventsListener = new FeedAdapter.ItemEventsListener() {
         @Override
+        public void onLikeClick(Post post, boolean isLiked) {
+            post.setLiked(isLiked);
+            repository.update(post);
+        }
+
+        @Override
         public void onItemClick(Post post) {
             showPost(post);
         }
