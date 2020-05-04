@@ -60,9 +60,6 @@ public class ProfileFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        /*TestUserData.setAvatarFromFile(currentUser.getAvatar(), profileAvatarView);
-        profileUsernameView.setText(currentUser.getUsername());
-        profileBioView.setText(currentUser.getBio());*/
         updateProfile();
 
         profileEditButton.setOnClickListener(new View.OnClickListener() {
@@ -80,10 +77,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void editProfile() {
-        /*getParentFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new ProfileEditingFragment())
-                .addToBackStack(null)
-                .commit();*/
         startActivity(new Intent(getContext(), ProfileEditingActivity.class));
     }
 

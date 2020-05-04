@@ -71,7 +71,10 @@ public class FeedFragment extends Fragment {
     public void onResume() {
         super.onResume();
         repository.addListener(repositoryListener);
-        repository.update();
+
+        for (Post post : repository.getAllPosts()) {
+            repository.update(post);
+        }
     }
 
     @Override
@@ -81,17 +84,12 @@ public class FeedFragment extends Fragment {
     }
 
     private void createNewPost() {
-//        makeTransactionWithBackStack(new PostAddingFragment());
         startActivity(new Intent(getContext(), PostAddingActivity.class));
     }
 
     private void showPost(Post post) {
-        makeTransactionWithBackStack(PostDetailsFragment.makeInstance(post.getPostId()));
-    }
-
-    private void makeTransactionWithBackStack(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragment)
+                .replace(R.id.fragment_container, PostDetailsFragment.makeInstance(post.getPostId()))
                 .addToBackStack(null)
                 .commit();
     }

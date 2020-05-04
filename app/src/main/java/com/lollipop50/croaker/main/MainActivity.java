@@ -33,24 +33,24 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case (R.id.action_feed):
-                        makeTransaction(fragmentManager, new FeedFragment());
-                        break;
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case (R.id.action_feed):
+                                makeTransaction(fragmentManager, new FeedFragment());
+                                break;
 
-                    case (R.id.action_search):
-                        makeTransaction(fragmentManager, new SearchFragment());
-                        break;
+                            case (R.id.action_search):
+                                makeTransaction(fragmentManager, new SearchFragment());
+                                break;
 
-                    case (R.id.action_profile):
-                        makeTransaction(fragmentManager, new ProfileFragment());
-                        break;
-                }
-                return true;
-            }
-        });
+                            case (R.id.action_profile):
+                                makeTransaction(fragmentManager, new ProfileFragment());
+                                break;
+                        }
+                        return true;
+                    }
+                });
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void makeTransaction(FragmentManager fragmentManager, Fragment fragment) {
+        while (fragmentManager.getBackStackEntryCount() > 0) {
+            fragmentManager.popBackStackImmediate();
+        }
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .commit();

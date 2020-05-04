@@ -85,6 +85,7 @@ public class PostDetailsFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 post.setLiked(isChecked);
+                repository.update(post);
             }
         });
     }

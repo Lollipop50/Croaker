@@ -146,7 +146,6 @@ public class ProfileEditingFragment extends Fragment {
     }
 
     private void closeProfileEditor() {
-//        getParentFragmentManager().popBackStack();
         getActivity().finish();
     }
 
@@ -165,6 +164,7 @@ public class ProfileEditingFragment extends Fragment {
         for (Post post : repository.getAllPosts()) {
             post.setAvatar(currentUser.getAvatar());
             post.setUsername(currentUser.getUsername());
+            repository.update(post);
         }
     }
 

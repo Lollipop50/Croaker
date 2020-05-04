@@ -118,7 +118,6 @@ public class PostAddingFragment extends Fragment {
     }
 
     private void closePostEditor() {
-//        getParentFragmentManager().popBackStack();
         getActivity().finish();
     }
 
