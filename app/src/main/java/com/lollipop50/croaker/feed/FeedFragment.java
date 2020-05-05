@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,7 +54,11 @@ public class FeedFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
+
         feedRecyclerView.setLayoutManager(linearLayoutManager);
+        feedRecyclerView.addItemDecoration(
+                new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL)
+        );
 
         feedAdapter = new FeedAdapter(repository.getAllPosts(), itemEventsListener);
 

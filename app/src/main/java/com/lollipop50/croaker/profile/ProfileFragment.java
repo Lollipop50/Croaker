@@ -81,6 +81,8 @@ public class ProfileFragment extends Fragment {
     }
 
     private void updateProfile() {
+        currentUser = userData.getCurrentUser();
+
         TestUserData.setAvatarFromFile(currentUser.getAvatar(), profileAvatarView);
         profileUsernameView.setText(currentUser.getUsername());
         profileBioView.setText(currentUser.getBio());
