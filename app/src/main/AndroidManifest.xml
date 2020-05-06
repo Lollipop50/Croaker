@@ -15,7 +15,9 @@
         android:theme="@style/GreenTheme">
         <activity android:name=".profile.ProfileEditingActivity"></activity>
         <activity android:name=".details.PostAddingActivity" />
-        <activity android:name=".main.MainActivity">
+        <activity
+            android:name=".main.MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

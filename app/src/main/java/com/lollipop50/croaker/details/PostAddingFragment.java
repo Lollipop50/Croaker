@@ -25,11 +25,13 @@ import com.lollipop50.croaker.repository.Repository;
 import com.lollipop50.croaker.repository.RepositoryCreator;
 import com.lollipop50.croaker.repository.UserData;
 import com.lollipop50.croaker.repository.UserDataProvider;
+import com.lollipop50.croaker.repository.test.TestRepository;
 
 import static android.app.Activity.RESULT_OK;
 
 public class PostAddingFragment extends Fragment {
 
+    private final static String KEY_PICKED_PICTURE = "picked_picture";
     private static final int RESULT_PICK_IMG = 1;
 
     private Button cancelAddingButton;
@@ -66,6 +68,11 @@ public class PostAddingFragment extends Fragment {
         postTextEditor = view.findViewById(R.id.post_text_editor);
         addPictureButton = view.findViewById(R.id.add_picture_button);
         addedPictureView = view.findViewById(R.id.added_picture_view);
+
+        if (savedInstanceState != null) {
+            postPicturePath = savedInstanceState.getString(KEY_PICKED_PICTURE);
+            TestRepository.setPictureFromFile(postPicturePath, addedPictureView);
+        }
     }
 
     @Override
@@ -117,6 +124,12 @@ public class PostAddingFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_PICKED_PICTURE, postPicturePath);
+    }
+
     private void closePostEditor() {
         getActivity().finish();
     }
@@ -157,7 +170,7 @@ public class PostAddingFragment extends Fragment {
                 postPicturePath = cursor.getString(columnIndex);
                 cursor.close();
 
-                addedPictureView.setImageBitmap(BitmapFactory.decodeFile(postPicturePath));
+                TestRepository.setPictureFromFile(postPicturePath, addedPictureView);
 
                 croakButton.setEnabled(true);
             }

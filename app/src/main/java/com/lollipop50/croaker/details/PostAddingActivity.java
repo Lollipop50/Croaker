@@ -14,6 +14,8 @@ public class PostAddingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
+        getSupportActionBar().setTitle(R.string.post_adding_title);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (fragmentManager.findFragmentById(R.id.editor_fragment_container) == null) {
             fragmentManager.beginTransaction()

@@ -25,11 +25,13 @@ import com.lollipop50.croaker.repository.Repository;
 import com.lollipop50.croaker.repository.RepositoryCreator;
 import com.lollipop50.croaker.repository.UserData;
 import com.lollipop50.croaker.repository.UserDataProvider;
+import com.lollipop50.croaker.repository.test.TestRepository;
 
 import static android.app.Activity.RESULT_OK;
 
 public class ProfileEditingFragment extends Fragment {
 
+    private final static String KEY_PICKED_PICTURE = "picked_picture";
     private static final int RESULT_PICK_IMG = 2;
 
     private Button cancelEditingButton;
@@ -67,6 +69,10 @@ public class ProfileEditingFragment extends Fragment {
 
         avatarPreview = view.findViewById(R.id.avatar_preview);
         avatarPath = currentUser.getAvatar();
+        if (savedInstanceState != null) {
+            avatarPath = savedInstanceState.getString(KEY_PICKED_PICTURE);
+            TestRepository.setPictureFromFile(avatarPath, avatarPreview);
+        }
 
         avatarEditButton = view.findViewById(R.id.avatar_edit_button);
 
@@ -145,6 +151,12 @@ public class ProfileEditingFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_PICKED_PICTURE, avatarPath);
+    }
+
     private void closeProfileEditor() {
         getActivity().finish();
     }
@@ -193,7 +205,7 @@ public class ProfileEditingFragment extends Fragment {
                 avatarPath = cursor.getString(columnIndex);
                 cursor.close();
 
-                avatarPreview.setImageBitmap(BitmapFactory.decodeFile(avatarPath));
+                TestRepository.setPictureFromFile(avatarPath, avatarPreview);
             }
         } catch (Exception e) {
             e.printStackTrace();

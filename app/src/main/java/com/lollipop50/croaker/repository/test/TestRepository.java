@@ -1,5 +1,9 @@
 package com.lollipop50.croaker.repository.test;
 
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.widget.ImageView;
+
 import com.lollipop50.croaker.model.Post;
 import com.lollipop50.croaker.repository.BaseRepository;
 
@@ -50,5 +54,9 @@ public class TestRepository extends BaseRepository {
         defaultPost.setPostText("Welcome to my blog!");
         defaultPost.setPostPicture("/storage/emulated/0/Pics4MyApps/Parrots.jpg");
         return defaultPost;
+    }
+
+    public static void setPictureFromFile(String filePath, ImageView imageView) {
+        imageView.setImageBitmap(BitmapFactory.decodeFile(filePath));
     }
 }

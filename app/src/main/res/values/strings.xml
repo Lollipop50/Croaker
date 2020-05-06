@@ -4,8 +4,8 @@
     <string name="menu_feed">Feed</string>
     <string name="menu_search">Search</string>
     <string name="menu_profile">Profile</string>
-
-    <string name="search_button">Search</string>
+    <string name="post_adding_title">Croak</string>
+    <string name="profile_editing_title">Edit profile</string>
 
     <string name="edit_button">Edit profile</string>
 
@@ -24,4 +24,8 @@
     <string name="username_hint">Username cannot be blank</string>
     <string name="bio_text">Bio</string>
     <string name="bio_hint">Tell something about you</string>
+
+    <string name="search_hint">Search Croaker</string>
+    <string name="results_hint">Enter a keyword</string>
+    <string name="results_text">Results:</string>
 </resources>

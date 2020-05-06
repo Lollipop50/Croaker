@@ -52,7 +52,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
         return allPosts.size();
     }
 
-    interface ItemEventsListener {
+    public interface ItemEventsListener {
         void onLikeClick(Post post, boolean isLiked);
         void onItemClick(Post post);
         void onLongItemClick(Post post);

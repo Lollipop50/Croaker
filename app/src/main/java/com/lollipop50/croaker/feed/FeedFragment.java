@@ -43,7 +43,7 @@ public class FeedFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        feedRecyclerView = view.findViewById(R.id.feedRecyclerView);
+        feedRecyclerView = view.findViewById(R.id.feed_RecyclerView);
         addButton = view.findViewById(R.id.add_button);
     }
 
@@ -61,8 +61,20 @@ public class FeedFragment extends Fragment {
         );
 
         feedAdapter = new FeedAdapter(repository.getAllPosts(), itemEventsListener);
-
         feedRecyclerView.setAdapter(feedAdapter);
+
+        feedRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (dy > 0 && addButton.getVisibility() == View.VISIBLE) {
+                    addButton.hide();
+                } else if (dy < 0 && addButton.getVisibility() != View.VISIBLE) {
+                    addButton.show();
+                }
+            }
+        });
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override

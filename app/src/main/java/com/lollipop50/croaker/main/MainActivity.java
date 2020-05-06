@@ -1,6 +1,7 @@
 package com.lollipop50.croaker.main;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final ActionBar actionBar = getSupportActionBar();
+
         final FragmentManager fragmentManager = getSupportFragmentManager();
         if (fragmentManager.findFragmentById(R.id.fragment_container) == null) {
             makeTransaction(fragmentManager, new FeedFragment());
@@ -38,14 +41,17 @@ public class MainActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case (R.id.action_feed):
                                 makeTransaction(fragmentManager, new FeedFragment());
+                                actionBar.setTitle(R.string.app_name);
                                 break;
 
                             case (R.id.action_search):
                                 makeTransaction(fragmentManager, new SearchFragment());
+                                actionBar.setTitle(R.string.menu_search);
                                 break;
 
                             case (R.id.action_profile):
                                 makeTransaction(fragmentManager, new ProfileFragment());
+                                actionBar.setTitle(R.string.menu_profile);
                                 break;
                         }
                         return true;

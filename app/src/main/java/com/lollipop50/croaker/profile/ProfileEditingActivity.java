@@ -15,6 +15,8 @@ public class ProfileEditingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
+        getSupportActionBar().setTitle(R.string.profile_editing_title);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (fragmentManager.findFragmentById(R.id.editor_fragment_container) == null) {
             fragmentManager.beginTransaction()

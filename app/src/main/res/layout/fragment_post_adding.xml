@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:hint="@string/post_text_editor_hint"
-            android:maxLines="10"
+            android:inputType="textMultiLine|textCapSentences"
             android:minLines="10" />
 
         <Button
