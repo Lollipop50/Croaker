@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.lollipop50.croaker.R;
+import com.lollipop50.croaker.bookmarks.BookmarksFragment;
 import com.lollipop50.croaker.feed.FeedFragment;
 import com.lollipop50.croaker.profile.ProfileFragment;
 import com.lollipop50.croaker.search.SearchFragment;
@@ -47,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
                             case (R.id.action_search):
                                 makeTransaction(fragmentManager, new SearchFragment());
                                 actionBar.setTitle(R.string.menu_search);
+                                break;
+
+                            case (R.id.action_bookmarks):
+                                makeTransaction(fragmentManager, new BookmarksFragment());
+                                actionBar.setTitle(R.string.menu_bookmarks);
                                 break;
 
                             case (R.id.action_profile):
