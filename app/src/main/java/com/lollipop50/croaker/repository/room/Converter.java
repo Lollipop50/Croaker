@@ -2,6 +2,7 @@ package com.lollipop50.croaker.repository.room;
 
 import com.lollipop50.croaker.model.Post;
 
+import java.util.Date;
 import java.util.UUID;
 
 public class Converter {
@@ -10,6 +11,7 @@ public class Converter {
         PostEntity postEntity = new PostEntity();
 
         postEntity.id = post.getPostId().toString();
+        postEntity.postDate = post.getPostDate().getTime();
         postEntity.avatar = post.getAvatar();
         postEntity.username = post.getUsername();
         postEntity.postText = post.getPostText();
@@ -27,6 +29,7 @@ public class Converter {
             post = new Post();
 
             post.setPostId(UUID.fromString(postEntity.id));
+            post.setPostDate(new Date(postEntity.postDate));
             post.setAvatar(postEntity.avatar);
             post.setUsername(postEntity.username);
             post.setPostText(postEntity.postText);

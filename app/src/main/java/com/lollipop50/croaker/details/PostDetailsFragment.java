@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -23,6 +24,7 @@ import com.lollipop50.croaker.repository.RepositoryCreator;
 import com.lollipop50.croaker.repository.test.TestUserData;
 
 import java.io.File;
+import java.util.Date;
 import java.util.UUID;
 
 public class PostDetailsFragment extends Fragment {
@@ -31,7 +33,7 @@ public class PostDetailsFragment extends Fragment {
 
     private ImageView avatarView;
     private TextView usernameView;
-    private UUID postId;
+    private TextView dateView;
     private TextView postTextView;
     private ImageView postPictureView;
     private CheckBox isLikedView;
@@ -39,6 +41,7 @@ public class PostDetailsFragment extends Fragment {
 
     private Repository repository;
     private Post post;
+    private UUID postId;
 
     public PostDetailsFragment() {
         super(R.layout.fragment_post_details);
@@ -62,6 +65,7 @@ public class PostDetailsFragment extends Fragment {
 
         avatarView = view.findViewById(R.id.details_avatar_view);
         usernameView = view.findViewById(R.id.details_username_view);
+        dateView = view.findViewById(R.id.details_date_view);
         postTextView = view.findViewById(R.id.details_post_text_view);
         postPictureView = view.findViewById(R.id.details_post_picture_view);
         isLikedView = view.findViewById(R.id.details_is_liked_view);
@@ -81,6 +85,8 @@ public class PostDetailsFragment extends Fragment {
         TestUserData.setAvatarFromFile(post.getAvatar(), avatarView);
 
         usernameView.setText(post.getUsername());
+
+        dateView.setText(formatPostDate());
 
         postTextView.setText(post.getPostText());
 
@@ -107,6 +113,16 @@ public class PostDetailsFragment extends Fragment {
                 updateCurrentPost();
             }
         });
+    }
+
+    private String formatPostDate() {
+        Date postDate = post.getPostDate();
+        java.text.DateFormat timeFormat = DateFormat.getTimeFormat(getContext());
+        java.text.DateFormat dateFormat = DateFormat.getMediumDateFormat(getContext());
+
+        String result = timeFormat.format(postDate) + " • " + dateFormat.format(postDate);
+
+        return result;
     }
 
     private void updateCurrentPost() {

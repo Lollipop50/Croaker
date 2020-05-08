@@ -1,5 +1,6 @@
 package com.lollipop50.croaker.model;
 
+import java.util.Date;
 import java.util.UUID;
 
 public class Post {
@@ -7,6 +8,7 @@ public class Post {
     private String avatar;
     private String username;
     private UUID postId;
+    private Date postDate;
     private String postText;
     private String postPicture;
     private boolean isLiked;
@@ -14,6 +16,7 @@ public class Post {
 
     public Post() {
         postId = UUID.randomUUID();
+        postDate = new Date();
     }
 
     public String getAvatar() {
@@ -38,6 +41,14 @@ public class Post {
 
     public void setPostId(UUID postId) {
         this.postId = postId;
+    }
+
+    public Date getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(Date postDate) {
+        this.postDate = postDate;
     }
 
     public String getPostText() {

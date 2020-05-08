@@ -10,6 +10,7 @@ public class PostEntity {
     @PrimaryKey
     @NonNull
     public String id;
+    public long postDate;
     public String avatar;
     public String username;
     public String postText;
