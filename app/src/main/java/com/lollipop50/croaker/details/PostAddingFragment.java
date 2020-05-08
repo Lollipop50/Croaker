@@ -38,6 +38,7 @@ public class PostAddingFragment extends Fragment {
     private Button croakButton;
     private EditText postTextEditor;
     private Button addPictureButton;
+    private Button deletePictureButton;
     private ImageView addedPictureView;
 
     private String postText = "";
@@ -64,9 +65,9 @@ public class PostAddingFragment extends Fragment {
 
         cancelAddingButton = view.findViewById(R.id.cancel_adding_button);
         croakButton = view.findViewById(R.id.croak_button);
-        croakButton.setEnabled(false);
         postTextEditor = view.findViewById(R.id.post_text_editor);
         addPictureButton = view.findViewById(R.id.add_picture_button);
+        deletePictureButton = view.findViewById(R.id.delete_picture_button);
         addedPictureView = view.findViewById(R.id.added_picture_view);
 
         if (savedInstanceState != null) {
@@ -102,10 +103,10 @@ public class PostAddingFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if ((s.length() == 0) && (postPicturePath.length() == 0)) {
+                postText = s.toString();
+                if ((postText.length() == 0) && (postPicturePath.length() == 0)) {
                     croakButton.setEnabled(false);
                 } else {
-                    postText = s.toString();
                     croakButton.setEnabled(true);
                 }
             }
@@ -120,6 +121,13 @@ public class PostAddingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 pickImageFromGallery();
+            }
+        });
+
+        deletePictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletePickedImage();
             }
         });
     }
@@ -172,11 +180,22 @@ public class PostAddingFragment extends Fragment {
 
                 TestRepository.setPictureFromFile(postPicturePath, addedPictureView);
 
+                deletePictureButton.setEnabled(true);
                 croakButton.setEnabled(true);
             }
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getContext(), R.string.fail_message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void deletePickedImage() {
+        postPicturePath = "";
+        addedPictureView.setImageResource(0);
+        deletePictureButton.setEnabled(false);
+
+        if (postText.length() == 0) {
+            croakButton.setEnabled(false);
         }
     }
 }

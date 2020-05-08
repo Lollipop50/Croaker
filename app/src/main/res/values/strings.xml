@@ -17,6 +17,7 @@
     <string name="croak_button">Croak</string>
     <string name="post_text_editor_hint">What\'s happening?</string>
     <string name="add_picture_button">Add picture</string>
+    <string name="delete_picture_button">Delete picture</string>
     <string name="not_picked_message">You haven\'t picked image</string>
     <string name="fail_message">Something went wrong</string>
 

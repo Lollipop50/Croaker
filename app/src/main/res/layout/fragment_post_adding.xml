@@ -26,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:enabled="false"
                 android:text="@string/croak_button" />
         </RelativeLayout>
 
@@ -38,11 +39,26 @@
             android:inputType="textMultiLine|textCapSentences"
             android:minLines="10" />
 
-        <Button
-            android:id="@+id/add_picture_button"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_picture_button" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/add_picture_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/add_picture_button" />
+
+            <Button
+                android:id="@+id/delete_picture_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:text="@string/delete_picture_button" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/added_picture_view"
