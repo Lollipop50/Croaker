@@ -32,6 +32,7 @@ public class PostDetailsFragment extends Fragment {
     private TextView postTextView;
     private ImageView postPictureView;
     private CheckBox isLikedView;
+    private CheckBox isBookmarkedView;
 
     private Repository repository;
     private Post post;
@@ -61,6 +62,7 @@ public class PostDetailsFragment extends Fragment {
         postTextView = view.findViewById(R.id.details_post_text_view);
         postPictureView = view.findViewById(R.id.details_post_picture_view);
         isLikedView = view.findViewById(R.id.details_is_liked_view);
+        isBookmarkedView = view.findViewById(R.id.details_is_bookmarked_view);
     }
 
     @Override
@@ -80,14 +82,26 @@ public class PostDetailsFragment extends Fragment {
         }
 
         isLikedView.setChecked(post.isLiked());
-
         isLikedView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 post.setLiked(isChecked);
-                repository.update(post);
+                updateCurrentPost();
             }
         });
+
+        isBookmarkedView.setChecked(post.isBookmarked());
+        isBookmarkedView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                post.setBookmarked(isChecked);
+                updateCurrentPost();
+            }
+        });
+    }
+
+    private void updateCurrentPost() {
+        repository.update(post);
     }
 
     public static PostDetailsFragment makeInstance(UUID postId) {

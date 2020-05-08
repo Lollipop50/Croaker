@@ -15,6 +15,7 @@ public class Converter {
         postEntity.postText = post.getPostText();
         postEntity.postPicture = post.getPostPicture();
         postEntity.isLiked = post.isLiked();
+        postEntity.isBookmarked = post.isBookmarked();
 
         return postEntity;
     }
@@ -31,6 +32,7 @@ public class Converter {
             post.setPostText(postEntity.postText);
             post.setPostPicture(postEntity.postPicture);
             post.setLiked(postEntity.isLiked);
+            post.setBookmarked(postEntity.isBookmarked);
         }
 
         return post;

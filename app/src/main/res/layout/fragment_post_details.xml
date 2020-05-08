@@ -50,13 +50,32 @@
             android:adjustViewBounds="true"
             tools:src="@drawable/question" />
 
-        <CheckBox
-            android:id="@+id/details_is_liked_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_marginTop="8dp"
-            android:button="@drawable/liked_checkbox" />
+            android:background="@android:color/darker_gray" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <CheckBox
+                android:id="@+id/details_is_liked_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:button="@drawable/liked_checkbox" />
+
+            <CheckBox
+                android:id="@+id/details_is_bookmarked_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:button="@drawable/bookmarked_checkbox" />
+        </FrameLayout>
+
     </LinearLayout>
 
 </ScrollView>

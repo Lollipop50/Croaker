@@ -15,4 +15,5 @@ public class PostEntity {
     public String postText;
     public String postPicture;
     public boolean isLiked;
+    public boolean isBookmarked;
 }

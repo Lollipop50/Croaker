@@ -10,6 +10,7 @@ public class Post {
     private String postText;
     private String postPicture;
     private boolean isLiked;
+    private boolean isBookmarked;
 
     public Post() {
         postId = UUID.randomUUID();
@@ -61,5 +62,13 @@ public class Post {
 
     public void setLiked(boolean liked) {
         isLiked = liked;
+    }
+
+    public boolean isBookmarked() {
+        return isBookmarked;
+    }
+
+    public void setBookmarked(boolean bookmarked) {
+        isBookmarked = bookmarked;
     }
 }

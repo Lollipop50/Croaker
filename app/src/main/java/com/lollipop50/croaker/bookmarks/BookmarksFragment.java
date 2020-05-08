@@ -65,9 +65,41 @@ public class BookmarksFragment extends Fragment {
                 new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL)
         );
 
-//        bookmarkedPosts = repository.getAllPosts();
         bookmarksAdapter = new FeedAdapter(bookmarkedPosts, itemEventsListener);
         bookmarksRecyclerView.setAdapter(bookmarksAdapter);
+        buildBookmarkedPostsList();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        repository.addListener(repositoryListener);
+
+        for (Post post : repository.getAllPosts()) {
+            repository.update(post);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        repository.removeListener(repositoryListener);
+        super.onPause();
+    }
+
+    private void buildBookmarkedPostsList() {
+        boolean bookmarkedFound = false;
+        bookmarkedPosts.clear();
+
+        for (Post post : repository.getAllPosts()) {
+            if (post.isBookmarked()) {
+                bookmarkedPosts.add(post);
+                bookmarkedFound = true;
+            }
+        }
+
+        noBookmarksView.setVisibility(bookmarkedFound ? View.INVISIBLE : View.VISIBLE);
+
+        bookmarksAdapter.updateAllPosts(bookmarkedPosts);
     }
 
     private void showPost(Post post) {
@@ -81,6 +113,13 @@ public class BookmarksFragment extends Fragment {
         DeleteConfirmationDialogFragment.makeInstance(post)
                 .show(getParentFragmentManager(), null);
     }
+
+    private final Repository.Listener repositoryListener = new Repository.Listener() {
+        @Override
+        public void onDataChanged() {
+            buildBookmarkedPostsList();
+        }
+    };
 
     private final FeedAdapter.ItemEventsListener itemEventsListener = new FeedAdapter.ItemEventsListener() {
         @Override
