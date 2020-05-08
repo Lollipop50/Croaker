@@ -1,5 +1,6 @@
 package com.lollipop50.croaker.details;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import androidx.fragment.app.Fragment;
 
 import com.lollipop50.croaker.R;
 import com.lollipop50.croaker.model.Post;
+import com.lollipop50.croaker.profile.ProfileActivity;
+import com.lollipop50.croaker.profile.ProfileFragment;
 import com.lollipop50.croaker.repository.Repository;
 import com.lollipop50.croaker.repository.RepositoryCreator;
 import com.lollipop50.croaker.repository.test.TestUserData;
@@ -69,6 +72,12 @@ public class PostDetailsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        avatarView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ProfileActivity.class));
+            }
+        });
         TestUserData.setAvatarFromFile(post.getAvatar(), avatarView);
 
         usernameView.setText(post.getUsername());

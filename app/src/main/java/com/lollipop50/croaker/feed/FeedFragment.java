@@ -15,12 +15,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lollipop50.croaker.R;
 import com.lollipop50.croaker.details.PostAddingActivity;
 import com.lollipop50.croaker.details.PostAddingFragment;
+import com.lollipop50.croaker.details.PostDetailsActivity;
 import com.lollipop50.croaker.model.Post;
 import com.lollipop50.croaker.details.PostDetailsFragment;
 import com.lollipop50.croaker.repository.Repository;
 import com.lollipop50.croaker.repository.RepositoryCreator;
 
 public class FeedFragment extends Fragment {
+
+    public final static String KEY_SELECTED_POST = "selected_post";
 
     private RecyclerView feedRecyclerView;
     private FloatingActionButton addButton;
@@ -105,10 +108,9 @@ public class FeedFragment extends Fragment {
     }
 
     private void showPost(Post post) {
-        getParentFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, PostDetailsFragment.makeInstance(post.getPostId()))
-                .addToBackStack(null)
-                .commit();
+        Intent postDetailsIntent = new Intent(getContext(), PostDetailsActivity.class);
+        postDetailsIntent.putExtra(KEY_SELECTED_POST, post.getPostId());
+        startActivity(postDetailsIntent);
     }
 
     private void showDeleteDialog(Post post) {

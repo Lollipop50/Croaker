@@ -1,5 +1,6 @@
 package com.lollipop50.croaker.bookmarks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -12,9 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lollipop50.croaker.R;
+import com.lollipop50.croaker.details.PostDetailsActivity;
 import com.lollipop50.croaker.details.PostDetailsFragment;
 import com.lollipop50.croaker.feed.DeleteConfirmationDialogFragment;
 import com.lollipop50.croaker.feed.FeedAdapter;
+import com.lollipop50.croaker.feed.FeedFragment;
 import com.lollipop50.croaker.model.Post;
 import com.lollipop50.croaker.repository.Repository;
 import com.lollipop50.croaker.repository.RepositoryCreator;
@@ -103,10 +106,9 @@ public class BookmarksFragment extends Fragment {
     }
 
     private void showPost(Post post) {
-        getParentFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, PostDetailsFragment.makeInstance(post.getPostId()))
-                .addToBackStack(null)
-                .commit();
+        Intent postDetailsIntent = new Intent(getContext(), PostDetailsActivity.class);
+        postDetailsIntent.putExtra(FeedFragment.KEY_SELECTED_POST, post.getPostId());
+        startActivity(postDetailsIntent);
     }
 
     private void showDeleteDialog(Post post) {
