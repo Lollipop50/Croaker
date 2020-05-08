@@ -37,7 +37,6 @@ public class ProfileEditingFragment extends Fragment {
     private Button cancelEditingButton;
     private Button saveButton;
     private ImageView avatarPreview;
-    private Button avatarEditButton;
     private EditText usernameEditor;
     private EditText bioEditor;
 
@@ -74,8 +73,6 @@ public class ProfileEditingFragment extends Fragment {
             TestRepository.setPictureFromFile(avatarPath, avatarPreview);
         }
 
-        avatarEditButton = view.findViewById(R.id.avatar_edit_button);
-
         usernameEditor = view.findViewById(R.id.username_editor);
         newUsername = currentUser.getUsername();
         usernameEditor.setText(newUsername);
@@ -104,7 +101,7 @@ public class ProfileEditingFragment extends Fragment {
             }
         });
 
-        avatarEditButton.setOnClickListener(new View.OnClickListener() {
+        avatarPreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pickImageFromGallery();

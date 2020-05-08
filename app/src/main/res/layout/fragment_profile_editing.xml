@@ -29,26 +29,13 @@
                 android:text="@string/save_button" />
         </RelativeLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/avatar_preview"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="8dp"
-                android:src="@mipmap/ic_pick_avatar" />
-
-            <Button
-                android:id="@+id/avatar_edit_button"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/transparent" />
-        </FrameLayout>
+        <ImageView
+            android:id="@+id/avatar_preview"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="8dp"
+            android:src="@mipmap/ic_pick_avatar" />
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
