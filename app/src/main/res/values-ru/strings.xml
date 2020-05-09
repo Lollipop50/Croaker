@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Крокер</string>
+
+    <string name="menu_feed">Кроки</string>
+    <string name="menu_search">Поиск</string>
+    <string name="menu_bookmarks">Закладки</string>
+    <string name="menu_profile">Профиль</string>
+
+    <string name="search_hint">Искать в Крокере</string>
+    <string name="results_hint">Введите ключевое слово</string>
+    <string name="results_text">Результатов:</string>
+
+    <string name="no_bookmarks_text">Вы пока не добавили в закладки ни одного крока</string>
+    <string name="bookmarks_showing_text_hint">Когда добавите, они появятся здесь.</string>
+
+    <string name="edit_button">Изменить профиль</string>
+
+    <string name="post_adding_title">Крокнуть</string>
+    <string name="profile_editing_title">Изменить профиль</string>
+
+    <string name="delete">Удалить</string>
+    <string name="confirmation_message">Удалить этот крок?</string>
+
+    <string name="croak_button">Крокнуть</string>
+    <string name="post_text_editor_hint">Что происходит?</string>
+    <string name="add_picture_button">Добавить изображение</string>
+    <string name="delete_picture_button">Удалить изображение</string>
+    <string name="not_picked_message">Вы не выбрали изображение</string>
+    <string name="fail_message">Что-то пошло не так</string>
+
+    <string name="back_button">Назад</string>
+    <string name="save_button">Сохранить</string>
+    <string name="username_text">Имя пользователя</string>
+    <string name="username_hint">Имя не может быть пустым</string>
+    <string name="bio_text">О себе</string>
+    <string name="bio_hint">Расскажите немного о себе</string>
+</resources>

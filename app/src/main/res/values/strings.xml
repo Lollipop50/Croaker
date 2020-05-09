@@ -19,7 +19,7 @@
     <string name="profile_editing_title">Edit profile</string>
 
     <string name="delete">Delete</string>
-    <string name="confirmation_message">Are you sure you want to delete this post?</string>
+    <string name="confirmation_message">Delete this croak?</string>
 
     <string name="croak_button">Croak</string>
     <string name="post_text_editor_hint">What\'s happening?</string>

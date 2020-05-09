@@ -20,15 +20,19 @@
                 android:id="@+id/cancel_adding_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@android:string/cancel" />
+                android:backgroundTint="@color/greenThemePrimary"
+                android:text="@android:string/cancel"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/croak_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:backgroundTint="@color/greenThemePrimary"
                 android:enabled="false"
-                android:text="@string/croak_button" />
+                android:text="@string/croak_button"
+                android:textColor="@color/white" />
         </RelativeLayout>
 
         <EditText
@@ -40,26 +44,27 @@
             android:inputType="textMultiLine|textCapSentences"
             android:minLines="10" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/add_picture_button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/add_picture_button" />
+                android:background="@color/grey"
+                android:src="@mipmap/ic_add_picture" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/delete_picture_button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_alignParentRight="true"
+                android:background="@color/grey"
                 android:enabled="false"
-                android:text="@string/delete_picture_button" />
-        </LinearLayout>
+                android:src="@mipmap/ic_delete_picture" />
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/added_picture_view"

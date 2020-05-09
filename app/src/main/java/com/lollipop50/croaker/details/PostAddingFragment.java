@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -37,8 +38,8 @@ public class PostAddingFragment extends Fragment {
     private Button cancelAddingButton;
     private Button croakButton;
     private EditText postTextEditor;
-    private Button addPictureButton;
-    private Button deletePictureButton;
+    private ImageButton addPictureButton;
+    private ImageButton deletePictureButton;
     private ImageView addedPictureView;
 
     private String postText = "";
