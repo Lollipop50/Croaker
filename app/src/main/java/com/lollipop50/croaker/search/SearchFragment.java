@@ -119,6 +119,7 @@ public class SearchFragment extends Fragment {
 
         MenuItem searchItem = menu.findItem(R.id.search_menu_item);
         postsSearchView = (SearchView) searchItem.getActionView();
+        postsSearchView.setMaxWidth(Integer.MAX_VALUE);
         postsSearchView.setInputType(InputType.TYPE_CLASS_TEXT |
                 InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         postsSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
