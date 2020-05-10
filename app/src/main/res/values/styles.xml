@@ -12,6 +12,8 @@
         <item name="colorPrimary">@color/greenThemePrimary</item>
         <item name="colorPrimaryDark">@color/greenThemePrimaryDark</item>
         <item name="colorAccent">@color/greenThemeAccent</item>
+        <item name="colorButtonNormal">@color/greenThemePrimary</item>
+        <item name="colorControlHighlight">@color/white</item>
     </style>
 
 </resources>

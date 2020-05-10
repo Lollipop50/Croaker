@@ -11,4 +11,5 @@
     <color name="greenThemePrimary">#19B300</color>
     <color name="greenThemePrimaryDark">#268D00</color>
     <color name="greenThemeAccent">#009688</color>
+    <color name="greenDisabled">#8E19B300</color>
 </resources>
